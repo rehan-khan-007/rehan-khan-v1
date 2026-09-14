@@ -113,3 +113,26 @@ ADR-026 · PRODUCTION LIVE — rehank.in deployed via Vercel (2026-09-14). Apex 
   provisioned. Push to main auto-deploys (CI verifies first). Known post-deploy state:
   utilities live, case studies pending Phase 5 content, JS budget exceedance tracked
   (ADR-018, Phase 8).
+
+ADR-027 · MobileNav focus containment (audit gate). Disclosure pattern retained as correct
+  for a nav menu; defect found: full-screen overlay strands keyboard users when Tab passes
+  the last panel link (focus lands behind overlay, scroll locked). FIX: focusout handler
+  closes the menu when focus escapes panel/toggle. Full focus trap evaluated and REJECTED
+  (complexity without benefit for a 4-link panel). Escape + focus-return unchanged.
+ADR-028 · Build-time OG cards via next/og (audit gate): Phase Space card (dark field, mono
+  kicker, Archivo title, single accent rule, REHANK.IN footer) for / and /work. Local fonts
+  loaded from app/fonts at build time; zero runtime cost; no new runtime dependencies
+  (next/og ships with Next). Per-project OG cards deferred to Phase 5 (cards should carry
+  real taglines). Fallback if satori rejects the variable font: swap title font to
+  IBM Plex Mono Medium — same card, guaranteed static-font rendering.
+ADR-029 · JSON-LD: minimal truthful Person schema on homepage (name, url, description,
+  sameAs=GitHub) derived from content modules. Project CreativeWork DEFERRED to Phase 5 —
+  schema without verified content is SEO theater (anti-fabrication principle).
+ADR-030 · Audit-gate decisions: (a) data-track attributes remain INERT and documented —
+  zero-external-requests is the V1 posture; activation is an explicit founder product
+  decision (no third-party analytics without approval); (b) hero blurDataURL stays neutral
+  (P3) — priority image + AVIF delivery make the benefit window narrow; revisit in Phase 8
+  with real LCP data; (c) JS budget fix is MEASUREMENT-FIRST — @next/bundle-analyzer wired,
+  LazyMotion/m-component migration prepared but NOT applied until analyzer attributes the
+  ~50KB homepage-only delta; (d) V4 exact type scale remains a source-of-truth gap (ADR-011)
+  — current values are provisional by design; Claude's Phase 3 checkpoint owns fidelity.

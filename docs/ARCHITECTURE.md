@@ -30,3 +30,12 @@ typecheck (strict) · eslint · content-lint (honesty invariants) · repo-lint
 - Add a project: add content/projects/<name>.ts + register in index.ts. Renderer handles it.
 - Add LIFE (future): flip status in content/site.ts destinations; never before its own phase.
 - Add a client component: ADR in DECISIONS.md amending the boundary list, then code.
+
+## OG image system (ADR-028)
+lib/og/card.tsx = shared build-time card builder (next/og, local fonts, no runtime cost).
+Route files: app/opengraph-image.tsx, app/work/opengraph-image.tsx. Serves og:image +
+twitter:image via file convention. Per-project cards: Phase 5.
+
+## data-track status (ADR-030)
+Attributes present on key links but INERT by decision — no listener, no provider,
+zero external requests in V1. Activation requires an explicit founder product decision.
