@@ -1,8 +1,8 @@
 import { site } from "@/content/site";
 import { DampedReadout } from "./DampedReadout";
 
-// TEMPORARY (ADR-043/044) — early-visitor band: full ADR-040 animation treatment
-// (ADR-043) + DampedReadout with explanatory copy (ADR-044). Geometry stays
+// TEMPORARY (ADR-043/044/045) — early-visitor band: full animation treatment,
+// readout with explanatory copy, visible+glowing ECG lead-in. Geometry stays
 // decoupled from the hero. Retirement: delete this file + DampedReadout.tsx +
 // styles/notice.css + the fenced lines in app/page.tsx. Nothing else.
 
@@ -20,13 +20,28 @@ export function EarlyVisitorNotice() {
             <span className="pulse">
               <svg className="pulse__svg" viewBox="0 0 280 40" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
                 <defs>
+                  <filter id="rk-glow" x="-60%" y="-120%" width="220%" height="340%">
+                    <feGaussianBlur stdDeviation="2.2" result="b" />
+                    <feMerge>
+                      <feMergeNode in="b" />
+                      <feMergeNode in="SourceGraphic" />
+                    </feMerge>
+                  </filter>
                   <linearGradient id="rk-pulse" x1="0" y1="0" x2="1" y2="0">
                     <stop offset="0" stopColor="#ff3b4e" />
                     <stop offset="0.42" stopColor="#ff6b7a" />
                     <stop offset="1" stopColor="#3fdcbe" />
                   </linearGradient>
                 </defs>
-                <path d="M78 20 L112 20" fill="none" stroke="#ff3b4e" strokeWidth="2" strokeLinecap="round" opacity="0.32" />
+                <path
+                  d="M78 20 L112 20"
+                  fill="none"
+                  stroke="#ff3b4e"
+                  strokeWidth="2.4"
+                  strokeLinecap="round"
+                  opacity="0.85"
+                  filter="url(#rk-glow)"
+                />
                 <path
                   d="M168 20 L182 20 L187 20 L192 5 L198 35 L203 20 L212 20 L216 15 L221 20 L234 20"
                   fill="none"

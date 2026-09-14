@@ -299,3 +299,16 @@ ADR-044 · DampedReadout RESTORED with explanatory copy (founder: "I want the da
   Field hidden below 1024px as before. Statement scaled 28-54px -> 24-44px to give
   the field room without growing the band's dominance. Client boundary amended:
   +DampedReadout. Retirement: dies with the band (same 4 deletions).
+
+ADR-045 · ECG lead-in line made visible + glow (founder: "almost invisible — make it
+  glow and also make it visible"). DC's prototype shipped the left red segment at
+  opacity .32, stroke 2, no glow — unreadable on #050F0E. Changed: opacity .32 -> .85,
+  stroke 2 -> 2.4, + svg feGaussianBlur glow filter (stdDev 2.2, merge blur+source —
+  same glow family as the heart's drop-shadow). Deviation from DC prototype is a
+  founder visibility directive; geometry/path unchanged. Dies with the band.
+
+ADR-045 AMENDMENT · First attempt (regex filter-insert) broke the JSX tree — the
+  perl capture swallowed the gradient's </defs>. Fifth chained-gate save. MECHANIZED
+  LESSON: no regex/perl edits on JSX structure, ever — full-file rewrite for any
+  structural component change (three incidents: MP8 patches, ADR-044 mount, ADR-045).
+  Fixed via full rewrite; ADR-045's visual changes unchanged.
