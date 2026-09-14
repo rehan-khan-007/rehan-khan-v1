@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-/* ===== TEMPORARY (ADR-040): early-visitor notice — retire: delete this import + styles/notice.css ===== */
+/* ===== TEMPORARY (ADR-043): early-visitor notice — retire: delete this import + styles/notice.css ===== */
 @import "./notice.css";
 
 /* V4 grid motif (ADR-042) — if this layer is ever retired: delete this import + styles/grid-motif.css + GridMotif.tsx + its mount in Hero.tsx */

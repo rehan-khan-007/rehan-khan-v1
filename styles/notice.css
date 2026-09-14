@@ -1,32 +1,192 @@
-/* TEMPORARY — EARLY-VISITOR BAND (ADR-041). RETIRE: delete this file + its
-   @import in globals.css + EarlyVisitorNotice.tsx + fenced lines in page.tsx.
-   Red (#FF3B4E) is TEMPORARY and confined to this file. */
+/* ================================================================
+   TEMPORARY — EARLY-VISITOR BAND. ADR-043: founder requested full
+   restoration of the ADR-040 animation treatment (ECG + packet + full
+   CTA cell). Geometry decoupling from ADR-041 PRESERVED (no hero
+   coupling). DampedReadout NOT restored (stays per ADR-041 — that was
+   the dominance problem, not animation).
+   RETIRE: delete this file + its @import in globals.css +
+   EarlyVisitorNotice.tsx + the fenced lines in app/page.tsx. Nothing else.
+   Red (#FF3B4E) is TEMPORARY and confined to this file.
+   ================================================================ */
+
 .notice {
-  --n-heart: #ff3b4e; --n-line: rgba(63,220,190,.24); --n-inner: rgba(63,220,190,.18); --n-radius: 8px;
-  position: relative; z-index: 5; margin: 0 20px 24px;
-  display: grid; grid-template-columns: minmax(0,1fr) auto; align-items: stretch;
-  border: 1px solid var(--n-line); border-radius: var(--n-radius);
-  background: linear-gradient(180deg, rgba(63,220,190,.045) 0%, rgba(63,220,190,.012) 100%);
-  animation: n-rise 520ms cubic-bezier(.16,1,.3,1) 60ms both;
+  --n-heart: #ff3b4e;
+  --n-line: rgba(63, 220, 190, 0.24);
+  --n-inner: rgba(63, 220, 190, 0.18);
+  --n-radius: 8px;
+  position: relative;
+  z-index: 5;
+  margin: 0 20px 24px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(240px, 0.34fr);
+  align-items: stretch;
+  border: 1px solid var(--n-line);
+  border-radius: var(--n-radius);
+  background: linear-gradient(180deg, rgba(63, 220, 190, 0.045) 0%, rgba(63, 220, 190, 0.012) 100%);
+  animation: n-rise 620ms cubic-bezier(0.16, 1, 0.3, 1) 60ms both;
 }
-@media (min-width:768px){.notice{margin-left:40px;margin-right:40px}}
-@media (min-width:1024px){.notice{margin-left:56px;margin-right:56px}}
-@media (min-width:1280px){.notice{margin-left:80px;margin-right:80px}}
-.notice__msg{padding:18px 20px}
-@media (min-width:768px){.notice__msg{padding:clamp(18px,2vw,24px) clamp(24px,3vw,36px)}}
-.notice__label{margin:0 0 10px;font-family:var(--font-mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#9df0e0}
-.notice__line{margin:0 0 10px;display:flex;align-items:center;flex-wrap:wrap;gap:.14em;font-family:var(--font-display);font-weight:500;font-size:clamp(18px,2vw,30px);line-height:1.15;letter-spacing:-.03em;text-transform:uppercase;color:#f1f7f5}
-.notice__heart{display:inline-block;color:var(--n-heart);font-size:.9em;line-height:1;margin:0 .3em;font-variant-emoji:text;filter:drop-shadow(0 0 10px rgba(255,59,78,.35));transform-origin:50% 50%;animation:n-beat 2600ms ease-in-out 1200ms infinite;will-change:transform}
-.notice__body{margin:0;max-width:52ch;font-family:var(--font-display);font-size:15px;line-height:1.55;color:#c2d2ce;text-wrap:pretty}
-.notice__cta{display:flex;flex-direction:column;justify-content:center;gap:6px;padding:16px 20px;border-left:1px solid var(--n-inner);border-radius:0 var(--n-radius) var(--n-radius) 0;transition:background-color 140ms ease}
-.notice__cta:hover{background-color:rgba(63,220,190,.07)}
-.cta__title{display:flex;align-items:baseline;gap:10px;font-family:var(--font-display);font-size:clamp(14px,1.2vw,18px);font-weight:500;letter-spacing:.02em;text-transform:uppercase;color:#f1f7f5}
-.cta__arrow{font-size:14px;color:#3fdcbe}
-.cta__fine{font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#7e918d}
-@keyframes n-rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-@keyframes n-beat{0%,100%{transform:scale(1)}8%{transform:scale(1.12)}16%{transform:scale(1)}24%{transform:scale(1.06)}32%{transform:scale(1)}}
-@media (max-width:767px){
-  .notice{grid-template-columns:minmax(0,1fr)}
-  .notice__cta{border-left:none;border-top:1px solid var(--n-inner);border-radius:0 0 var(--n-radius) var(--n-radius)}
+@media (min-width: 768px)  { .notice { margin-left: 40px; margin-right: 40px; } }
+@media (min-width: 1024px) { .notice { margin-left: 56px; margin-right: 56px; } }
+@media (min-width: 1280px) { .notice { margin-left: 80px; margin-right: 80px; } }
+
+.notice__msg {
+  padding: 18px 20px;
 }
-@media (prefers-reduced-motion:reduce){.notice,.notice *,.notice *::before,.notice *::after{animation:none!important;transition:none!important}}
+@media (min-width: 768px) { .notice__msg { padding: clamp(18px, 2vw, 24px) clamp(24px, 3vw, 36px); } }
+
+.notice__label {
+  margin: 0 0 10px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #9df0e0;
+}
+.notice__line {
+  margin: 0 0 10px;
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  gap: 0.02em;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(20px, 2.1vw, 32px);
+  line-height: 1.15;
+  letter-spacing: -0.035em;
+  text-transform: uppercase;
+  color: #f1f7f5;
+}
+.notice__body {
+  margin: 0;
+  max-width: 44ch;
+  font-family: var(--font-display);
+  font-size: 15px;
+  line-height: 1.55;
+  color: #c2d2ce;
+  text-wrap: pretty;
+}
+
+/* —— Heart + ECG (ADR-040 treatment, restored per ADR-043) ——
+   Fixed-width interval; the SVG never stretches, so the word gap and
+   the trace length stay independent (DC handoff). */
+.pulse {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(130px, 11vw, 190px);
+  height: 1em;
+  margin: 0 0.1em;
+  flex: 0 0 auto;
+}
+.pulse__svg {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: block;
+  width: clamp(150px, 13vw, 220px);
+  height: 2em;
+  filter: drop-shadow(0 0 11px rgba(255, 59, 78, 0.34));
+}
+.pulse__heart {
+  position: relative;
+  z-index: 2;
+  display: inline-block;
+  color: var(--n-heart);
+  font-size: 1.08em;
+  line-height: 1;
+  font-variant-emoji: text;
+  filter: drop-shadow(0 0 16px rgba(255, 59, 78, 0.5));
+  animation: n-beat 2600ms ease-in-out 1500ms infinite;
+  will-change: transform;
+}
+.pulse__packet {
+  animation: n-packet 2600ms cubic-bezier(0.3, 0.7, 0.4, 1) 1500ms infinite;
+  opacity: 0.9;
+}
+
+/* —— GitHub CTA cell — full ADR-040 treatment restored —— */
+.notice__cta {
+  padding: clamp(22px, 2.6vw, 34px) clamp(24px, 3vw, 40px);
+  border-left: 1px solid var(--n-inner);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 10px;
+  color: #e4ede9;
+  border-radius: 0 var(--n-radius) var(--n-radius) 0;
+  transition: background-color 140ms ease;
+}
+.notice__cta:hover { background-color: rgba(63, 220, 190, 0.07); }
+.cta__label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #9df0e0;
+  margin-bottom: 6px;
+}
+.cta__title {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  font-family: var(--font-display);
+  font-size: clamp(18px, 1.5vw, 24px);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #f1f7f5;
+}
+.cta__arrow { font-size: 15px; color: #3fdcbe; }
+.cta__rule {
+  height: 1px;
+  width: 100%;
+  max-width: 220px;
+  opacity: 0.8;
+  margin: 2px 0 4px;
+  background: linear-gradient(to right, #3fdcbe, rgba(63, 220, 190, 0));
+}
+.cta__fine {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  line-height: 1.7;
+  color: #7e918d;
+}
+
+@keyframes n-rise { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+@keyframes n-beat {
+  0%, 100% { transform: scale(1); }
+  9% { transform: scale(1.1); }
+  18% { transform: scale(1); }
+  27% { transform: scale(1.055); }
+  36% { transform: scale(1); }
+}
+@keyframes n-packet { from { stroke-dashoffset: 320; } to { stroke-dashoffset: 0; } }
+
+@media (max-width: 1023px) {
+  .notice { grid-template-columns: minmax(0, 1fr); }
+  .notice__line { flex-wrap: wrap; white-space: normal; font-size: clamp(18px, 6.4vw, 28px); }
+  .pulse { width: clamp(104px, 26vw, 150px); }
+  .pulse__svg { width: clamp(110px, 27vw, 150px); }
+  .notice__cta {
+    padding: 20px;
+    border-left: none;
+    border-top: 1px solid var(--n-inner);
+    border-radius: 0 0 var(--n-radius) var(--n-radius);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .notice, .notice *, .notice *::before, .notice *::after {
+    animation: none !important;
+    transition: none !important;
+    stroke-dashoffset: 0 !important;
+  }
+}

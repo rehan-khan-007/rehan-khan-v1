@@ -271,3 +271,17 @@ ADR-042 · V4 grid motif reinstated (founder directive: "add the grid thing from
   feature); if it should die with the notice band instead, its retirement is a
   3-deletion move noted in the css header. NOTE: this block is idempotent-final —
   it also completes ADR-041 if that corrective had not been run.
+
+ADR-043 · Founder requested full restoration of the ADR-040 notice ANIMATION treatment
+  ("restore everything that was there in the animation, I wanted it"). Supersedes
+  ADR-041's slimming on ANIMATION ONLY. Restored: ECG trace + packet sweep (16/320 dash,
+  2600ms cubic-bezier(.3,.7,.4,1), 1500ms delay) firing each heartbeat; full CTA cell
+  (EXPLORE THE BUILD label, VIEW ON GITHUB + arrow, gradient rule, CODE. IDEAS.
+  PROGRESS. / A LOT MORE COMING. fine print); ADR-040 statement scale (28-54px desktop
+  ramp; 22-34px below 1024); double-beat heart (unchanged from 041). PRESERVED from
+  ADR-041: geometry decoupling (no hero coupling, no compact branches, hero stays
+  pre-040 form) and the NO-DampedReadout decision (that was the dominance problem,
+  not animation — founder can request separately). Fine print normalized to the 11px
+  mono floor (041 discipline kept — sub-floor sizes stay dead). Reduced motion: all
+  animation off, stroke-dashoffset pinned, band fully present. Retirement: unchanged —
+  delete component + css + fenced lines; red dies with it.
