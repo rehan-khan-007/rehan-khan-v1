@@ -98,3 +98,10 @@ ADR-024 · Canonical domain wired: https://rehank.in (apex). siteUrl constant in
   robots, and layout metadataBase (silences Next warning; absolute OG/canonical URLs).
   localhost fallback removed — CI builds now emit production URLs. www subdomain:
   redirect to apex, configured at Vercel deploy time. Deploy target: rehank.in.
+
+ADR-025 · Secrets guard in repo-lint (CI). Trigger: founder pasted a real env manifest
+  (rotated) into chat while repo is public. Mechanism over goodwill: repo-lint now scans
+  every git-tracked text file for credential patterns (OpenRouter/Neon/Tavily/Langfuse
+  prefixes, credential-bearing connection strings, generic secret literals) and fails CI
+  before a secret can be pushed. .env stays untracked via .gitignore (verified).
+  Sanitized AgentOS integration inventory recorded in CONTENT.md — names only, never values.

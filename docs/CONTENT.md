@@ -15,3 +15,16 @@
 | Education periods/credentials | MISSING VERIFIED SOURCE | content/experience.ts |
 | About copy | MISSING VERIFIED SOURCE (Rehan) | content/about.ts |
 | Domain | RESOLVED — rehank.in (canonical, ADR-024) | www redirect configured at deploy |
+
+## AgentOS — verified infrastructure inventory (founder-provided, sanitized 2026-09-14)
+
+Confirmed integrations (values never stored; key names only):
+- Neon PostgreSQL — asyncpg driver (Python async backend)
+- Upstash Redis (TLS)
+- Cloudflare R2 object storage — bucket: agentos-uploads
+- OpenRouter — LLM API routing
+- Langfuse — LLM observability
+- Tavily — web search
+
+Purposes beyond integration: [TO CONFIRM — Phase 5 repo extraction]
+Phase 5 source of truth: AgentOS repository — URL pending.
