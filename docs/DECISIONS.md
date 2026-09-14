@@ -165,3 +165,8 @@ ADR-033 · JS budget fix (audit gate item 1, measurement-first per ADR-030c). At
   its subtree; MobileNav uses no motion). Covers all used features (variants, stagger,
   whileInView, MotionValues); drag/layout not used. Visual behavior unchanged. Budget
   ledger: measured 156KB -> [route table after this commit is the recorded result].
+
+ADR-034 · Mobile LCP fix (measured 2.5s vs 2.0s budget; audit gate §A). Cause: hero JPEG
+  q82 (460KB) is the LCP element on throttled mobile. Fix: re-encode from original PNG at
+  q72 (no generation loss; treated photo hides compression). Visual behavior unchanged
+  under scrim+brightness. Re-measured LCP recorded post-deploy. Revert path: git revert.
