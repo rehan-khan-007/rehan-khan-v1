@@ -170,3 +170,18 @@ ADR-034 · Mobile LCP fix (measured 2.5s vs 2.0s budget; audit gate §A). Cause:
   q82 (460KB) is the LCP element on throttled mobile. Fix: re-encode from original PNG at
   q72 (no generation loss; treated photo hides compression). Visual behavior unchanged
   under scrim+brightness. Re-measured LCP recorded post-deploy. Revert path: git revert.
+
+ADR-033 AMENDMENT · Measured result: LazyMotion+m+strict saved ~1KB (156 -> 155), not the
+  projected 20-30KB. Attribution hypothesis partially wrong; recorded as a lesson. Async
+  loadFeatures split evaluated and REJECTED: homepage needs features at hydration for the
+  boot sequence, so bytes-on-wire do not decrease — it would improve the route-table
+  number without real improvement (metric gaming). 155KB stands as the honest number:
+  103KB framework floor (irreducible) + ~52KB homepage graph, all load-bearing.
+ADR-034 RESULT · Mobile LCP 2.5s -> 2.1s (hero q72, 408KB). Remaining 0.1s over budget;
+  driver is total page weight on simulated slow-4G, not the image. Desktop LCP 0.5s.
+  Tiebreaker: real-device cellular check (B6).
+ADR-035 (PENDING FOUNDER RATIFICATION) · Budget disposition: homepage JS 155KB vs 150
+  ceiling (+3.3%); mobile LCP 2.1s vs 2.0 (+5%, simulated throttling). Measured UX
+  impact: perf 97-99, CLS 0, TBT 10ms, desktop 100/0.5s. RECOMMENDATION: accept both
+  with this ledger as evidence; B6 real-device check as the human tiebreaker. Founder
+  ratification flips this from pending to accepted.
