@@ -1,7 +1,7 @@
 "use client";
 
 import { Children, useEffect, useState } from "react";
-import { motion, useReducedMotion, type Variants } from "motion/react";
+import { m, useReducedMotion, type Variants } from "motion/react";
 import { EASE_OUT_EXPO, STAGGER } from "@/lib/motion/tokens";
 
 const container: Variants = {
@@ -31,12 +31,12 @@ export function Boot({ children }: { children: React.ReactNode }) {
   if (reduced) return <>{children}</>;
 
   return (
-    <motion.div initial="hidden" animate={skipped ? "skip" : "show"} variants={container}>
+    <m.div initial="hidden" animate={skipped ? "skip" : "show"} variants={container}>
       {Children.map(children, (child, i) => (
-        <motion.div key={i} variants={item} data-anim className="mb-6 last:mb-0">
+        <m.div key={i} variants={item} data-anim className="mb-6 last:mb-0">
           {child}
-        </motion.div>
+        </m.div>
       ))}
-    </motion.div>
+    </m.div>
   );
 }

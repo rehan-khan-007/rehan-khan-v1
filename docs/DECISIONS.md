@@ -157,3 +157,11 @@ ADR-032 · OG fonts final resolution: satori does not support variable fonts (fa
   ('SELECTED WORK'). Chain of failures for the record: WOFF2 signature -> TTF conversion
   -> variable-font instancing. The chained verify-gate caught all three before any
   broken commit reached main (after the one it didn't — ADR-031).
+
+ADR-033 · JS budget fix (audit gate item 1, measurement-first per ADR-030c). Attribution
+  from route table: shared 103KB gz = react-dom(54.2)+next runtime(46.4); homepage-only
+  delta ~53KB = motion package via 4 client consumers. Fix: LazyMotion + m components +
+  domAnimation features, strict mode (template.tsx wraps — all motion consumers are in
+  its subtree; MobileNav uses no motion). Covers all used features (variants, stagger,
+  whileInView, MotionValues); drag/layout not used. Visual behavior unchanged. Budget
+  ledger: measured 156KB -> [route table after this commit is the recorded result].

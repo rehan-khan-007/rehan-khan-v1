@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
+import { m, useReducedMotion, useScroll, useTransform } from "motion/react";
 
 const RECESSION_RANGE = 620; // px of homepage scroll (brief §11)
 
@@ -34,16 +34,13 @@ export function PhotoRecession({ children }: { children: React.ReactNode }) {
   }
 
   return (
-    <motion.div
-      className="relative w-full will-change-transform"
-      style={{ opacity, y, scale }}
-    >
+    <m.div className="relative w-full will-change-transform" style={{ opacity, y, scale }}>
       {children}
-      <motion.div
+      <m.div
         aria-hidden
         className="pointer-events-none absolute inset-0 bg-bg"
         style={{ opacity: scrim }}
       />
-    </motion.div>
+    </m.div>
   );
 }
