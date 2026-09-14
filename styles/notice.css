@@ -1,12 +1,11 @@
 /* ================================================================
-   TEMPORARY — EARLY-VISITOR BAND. ADR-043: founder requested full
-   restoration of the ADR-040 animation treatment (ECG + packet + full
-   CTA cell). Geometry decoupling from ADR-041 PRESERVED (no hero
-   coupling). DampedReadout NOT restored (stays per ADR-041 — that was
-   the dominance problem, not animation).
+   TEMPORARY — EARLY-VISITOR BAND. Lineage: ADR-041 (slim) → 043
+   (full animation restore) → 044 (readout + explanatory copy) →
+   045/047/048 (lead-in visibility iterations) → 049 (length +
+   lengthwise gradient + beat-synced glow). Hero geometry decoupled.
    RETIRE: delete this file + its @import in globals.css +
-   EarlyVisitorNotice.tsx + the fenced lines in app/page.tsx. Nothing else.
-   Red (#FF3B4E) is TEMPORARY and confined to this file.
+   EarlyVisitorNotice.tsx + DampedReadout.tsx + the fenced lines in
+   app/page.tsx. Nothing else. Red is TEMPORARY, confined to this file.
    ================================================================ */
 
 .notice {
@@ -31,8 +30,14 @@
 
 .notice__msg {
   padding: 18px 20px;
+  display: grid;
+  grid-template-columns: minmax(min-content, auto) minmax(160px, 1fr);
+  column-gap: clamp(20px, 3vw, 48px);
+  align-items: center;
 }
 @media (min-width: 768px) { .notice__msg { padding: clamp(18px, 2vw, 24px) clamp(24px, 3vw, 36px); } }
+
+.notice__copy { display: flex; flex-direction: column; align-items: flex-start; }
 
 .notice__label {
   margin: 0 0 10px;
@@ -42,6 +47,7 @@
   text-transform: uppercase;
   color: #9df0e0;
 }
+
 .notice__line {
   margin: 0 0 10px;
   display: flex;
@@ -51,12 +57,13 @@
   gap: 0.02em;
   font-family: var(--font-display);
   font-weight: 500;
-  font-size: clamp(20px, 2.1vw, 32px);
+  font-size: clamp(24px, 2.6vw, 44px);
   line-height: 1.15;
   letter-spacing: -0.035em;
   text-transform: uppercase;
   color: #f1f7f5;
 }
+
 .notice__body {
   margin: 0;
   max-width: 44ch;
@@ -67,11 +74,8 @@
   text-wrap: pretty;
 }
 
-/* —— Heart + ECG (ADR-040 treatment, restored per ADR-043) ——
-   Fixed-width interval; the SVG never stretches, so the word gap and
-   the trace length stay independent (DC handoff). */
+/* —— Heart + ECG interval —— */
 .pulse {
-  overflow: visible;
   position: relative;
   display: inline-flex;
   align-items: center;
@@ -80,6 +84,7 @@
   height: 1em;
   margin: 0 0.1em;
   flex: 0 0 auto;
+  overflow: visible;
 }
 .pulse__svg {
   position: absolute;
@@ -89,7 +94,7 @@
   top: 50%;
   transform: translate(-50%, -50%);
   display: block;
-  width: clamp(150px, 13vw, 220px);
+  width: clamp(160px, 14vw, 240px);
   height: 2em;
   filter: drop-shadow(0 0 11px rgba(255, 59, 78, 0.34));
 }
@@ -110,7 +115,60 @@
   opacity: 0.9;
 }
 
-/* —— GitHub CTA cell — full ADR-040 treatment restored —— */
+/* ADR-049: lead-in glow flares in lockstep with the heart's double-beat —
+   same duration/easing/delay, peaks aligned at 9% and 27%. */
+.pulse__leadglow {
+  animation: n-leadglow 2600ms ease-in-out 1500ms infinite;
+  will-change: opacity;
+}
+
+@keyframes n-rise { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+@keyframes n-beat {
+  0%, 100% { transform: scale(1); }
+  9% { transform: scale(1.1); }
+  18% { transform: scale(1); }
+  27% { transform: scale(1.055); }
+  36% { transform: scale(1); }
+}
+@keyframes n-packet { from { stroke-dashoffset: 320; } to { stroke-dashoffset: 0; } }
+@keyframes n-leadglow {
+  0%, 100% { opacity: 0.3; }
+  9% { opacity: 1; }
+  18% { opacity: 0.45; }
+  27% { opacity: 0.8; }
+  36% { opacity: 0.3; }
+}
+
+/* —— Damped-response field (ADR-044) —— */
+.field {
+  position: relative;
+  height: 100%;
+  min-height: 112px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  -webkit-mask-image: linear-gradient(to right, #000 0%, #000 72%, transparent 100%);
+  mask-image: linear-gradient(to right, #000 0%, #000 72%, transparent 100%);
+}
+.field__svg { display: block; width: 100%; height: clamp(92px, 11vh, 124px); }
+.field__cap {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #7e918d;
+}
+.field__note {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 13px;
+  line-height: 1.45;
+  color: #93a5a1;
+  text-wrap: pretty;
+}
+
+/* —— GitHub CTA cell (ADR-043) —— */
 .notice__cta {
   padding: clamp(22px, 2.6vw, 34px) clamp(24px, 3vw, 40px);
   border-left: 1px solid var(--n-inner);
@@ -161,22 +219,13 @@
   color: #7e918d;
 }
 
-@keyframes n-rise { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
-@keyframes n-beat {
-  0%, 100% { transform: scale(1); }
-  9% { transform: scale(1.1); }
-  18% { transform: scale(1); }
-  27% { transform: scale(1.055); }
-  36% { transform: scale(1); }
-}
-@keyframes n-packet { from { stroke-dashoffset: 320; } to { stroke-dashoffset: 0; } }
-
 @media (max-width: 1023px) {
   .notice { grid-template-columns: minmax(0, 1fr); }
+  .notice__msg { grid-template-columns: minmax(0, 1fr); }
   .notice__line { flex-wrap: wrap; white-space: normal; font-size: clamp(18px, 6.4vw, 28px); }
-  .pulse {
-  overflow: visible; width: clamp(120px, 28vw, 175px); }
-  .pulse__svg { width: clamp(125px, 29vw, 175px); }
+  .pulse { width: clamp(120px, 28vw, 175px); }
+  .pulse__svg { width: clamp(130px, 30vw, 185px); }
+  .field { display: none; }
   .notice__cta {
     padding: 20px;
     border-left: none;
@@ -191,40 +240,4 @@
     transition: none !important;
     stroke-dashoffset: 0 !important;
   }
-}
-
-/* —— Damped-response field (ADR-044: restored WITH explanatory copy) —— */
-.notice__msg { display: grid; grid-template-columns: minmax(min-content, auto) minmax(160px, 1fr); column-gap: clamp(20px, 3vw, 48px); align-items: center; }
-.notice__copy { display: flex; flex-direction: column; align-items: flex-start; }
-.field {
-  position: relative;
-  height: 100%;
-  min-height: 112px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 6px;
-  -webkit-mask-image: linear-gradient(to right, #000 0%, #000 72%, transparent 100%);
-  mask-image: linear-gradient(to right, #000 0%, #000 72%, transparent 100%);
-}
-.field__svg { display: block; width: 100%; height: clamp(92px, 11vh, 124px); }
-.field__cap {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: #7e918d;
-}
-.field__note {
-  margin: 0;
-  font-family: var(--font-display);
-  font-size: 13px;
-  line-height: 1.45;
-  color: #93a5a1;
-  text-wrap: pretty;
-}
-
-@media (max-width: 1023px) {
-  .notice__msg { grid-template-columns: minmax(0, 1fr); }
-  .field { display: none; }
 }

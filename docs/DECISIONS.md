@@ -346,3 +346,19 @@ ADR-048 · Lead-in rebuilt: original DC geometry + text-glow treatment (founder:
   emitted BY the line (the text-shadow technique) — explicitly NOT the heart's
   drop-shadow halo (ADR-045's feMerge filter retired with this rewrite).
   Heart/gradient-trace/packet unchanged. Standing rule honored: full rewrite.
+
+ADR-049 · Lead-in: length + lengthwise gradient + beat-synced glow (founder: "increase
+  the length; suitable with the bg, not completely invisible; when the heart pumps it
+  should glow — intensity from light to dark"). (1) LENGTH: 78-112 (34u) -> 48-112
+  (64u, ~2x visual); viewBox stays 280 with margin both ends; .pulse__svg width
+  raised to clamp(160px,14vw,240px) IN THE SAME COMMIT (ADR-047 lesson mechanized);
+  .pulse overflow:visible retained. (2) VISIBILITY: crisp stroke carries linearGradient
+  rk-lead (userSpaceOnUse, x 48->112): stopOpacity .35 at the far end -> 1.0 at the
+  heart end — constant presence, tasteful on #050F0E. (3) BEAT-SYNCED GLOW: fat
+  underlayer (stroke 7, blur stdDev 3, gradient stroke) with n-leadglow — same
+  2600ms/ease-in-out/1500ms as n-beat, opacity 0.3 rest -> 1.0 at 9% -> 0.45 -> 0.8
+  at 27% -> 0.3 — flares in lockstep with the heart's double-beat; resting attribute
+  opacity 0.4 is the reduced-motion fallback (steady soft glow, no flare). Full-file
+  rewrites of component + css (standing rule; also supersedes the unseen interim fix
+  deterministically). ECG complex unchanged this round — one variable at a time.
+  Gradient direction: bright-at-heart; flip = swap two stops. Dies with the band.

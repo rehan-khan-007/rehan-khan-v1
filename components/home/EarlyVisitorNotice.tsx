@@ -1,8 +1,8 @@
 import { site } from "@/content/site";
 import { DampedReadout } from "./DampedReadout";
 
-// TEMPORARY (ADR-043/044/045/046/047/048) — early-visitor band. Geometry stays
-// decoupled from the hero. Retirement: delete this file + DampedReadout.tsx +
+// TEMPORARY (ADR-043/044/049) — early-visitor band. Geometry stays decoupled
+// from the hero. Retirement: delete this file + DampedReadout.tsx +
 // styles/notice.css + the fenced lines in app/page.tsx. Nothing else.
 
 const githubHref = site.utilities.find((u) => u.label === "GitHub")?.href;
@@ -29,31 +29,39 @@ export function EarlyVisitorNotice() {
                     <stop offset="0.42" stopColor="#ff6b7a" />
                     <stop offset="1" stopColor="#3fdcbe" />
                   </linearGradient>
+                  {/* ADR-049: lengthwise intensity — dim at the far end,
+                      full brightness at the heart. userSpaceOnUse maps the
+                      gradient to the actual line coordinates. */}
+                  <linearGradient id="rk-lead" x1="48" y1="0" x2="112" y2="0" gradientUnits="userSpaceOnUse">
+                    <stop offset="0" stopColor="#ff5566" stopOpacity="0.35" />
+                    <stop offset="1" stopColor="#ff6b7a" stopOpacity="1" />
+                  </linearGradient>
+                  <filter id="rk-lineglow" x="-80%" y="-300%" width="260%" height="700%">
+                    <feGaussianBlur stdDeviation="3" />
+                  </filter>
                 </defs>
-                {/* Lead-in — text-glow technique (ADR-048): the same path
-                    painted twice. Underlayer: fat (stroke 7), blurred
-                    (stdDev 3), bright red at 0.55 — the luminosity. Overlayer:
-                    crisp 2.4px hot-red stroke at full opacity — the line. */}
+                {/* Glow underlayer — beat-synced flare (ADR-049). Resting
+                    opacity 0.4 (attribute) is the reduced-motion fallback;
+                    the n-leadglow animation drives it in lockstep with the
+                    heart's double-beat. */}
                 <path
-                  d="M78 20 L112 20"
+                  className="pulse__leadglow"
+                  d="M48 20 L112 20"
                   fill="none"
-                  stroke="#ff5566"
+                  stroke="url(#rk-lead)"
                   strokeWidth="7"
                   strokeLinecap="round"
-                  opacity="0.55"
+                  opacity="0.4"
                   filter="url(#rk-lineglow)"
                 />
+                {/* Crisp line — constant presence, gradient intensity */}
                 <path
-                  d="M78 20 L112 20"
+                  d="M48 20 L112 20"
                   fill="none"
-                  stroke="#ff5b6b"
+                  stroke="url(#rk-lead)"
                   strokeWidth="2.4"
                   strokeLinecap="round"
-                  opacity="1"
                 />
-                <filter id="rk-lineglow" x="-80%" y="-300%" width="260%" height="700%">
-                  <feGaussianBlur stdDeviation="3" />
-                </filter>
                 <path
                   d="M168 20 L182 20 L187 20 L192 5 L198 35 L203 20 L212 20 L216 15 L221 20 L234 20"
                   fill="none"
