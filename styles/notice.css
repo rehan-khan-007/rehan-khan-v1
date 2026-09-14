@@ -89,7 +89,7 @@
   top: 50%;
   transform: translate(-50%, -50%);
   display: block;
-  width: clamp(200px, 17vw, 290px);
+  width: clamp(150px, 13vw, 220px);
   height: 2em;
   filter: drop-shadow(0 0 11px rgba(255, 59, 78, 0.34));
 }

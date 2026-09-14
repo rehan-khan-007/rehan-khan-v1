@@ -333,3 +333,16 @@ ADR-047 · Lead-in disappearance fixed (founder report: "red line on the left of
   to clamp(200px,17vw,290px) so the box comfortably contains the 300-unit drawing;
   (c) lead-in anchored at x=60 with viewBox margin both ends. Geometry per ADR-046
   otherwise unchanged (52px lead-in, 84px ECG). Standing rule honored: full rewrite.
+
+ADR-048 · Lead-in rebuilt: original DC geometry + text-glow treatment (founder:
+  "keep the line as it was; increase brightness first, then glow — but unlike the
+  heart glow, like how text color glows on a font"). Reverts ADR-046/047 geometry
+  (lead-in back to 78-112, ECG to 168-234, viewBox 280; CSS svg width back to
+  150-220 — the extension experiments read as the cause of invisibility and are
+  abandoned wholesale). New treatment: (1) BASELINE BRIGHTNESS: crisp stroke
+  #ff5b6b (hot red, brighter than the heart's #ff3b4e) at opacity 1; (2) TEXT-GLOW,
+  not halo: same path painted twice — underlayer stroke-width 7 blurred stdDev 3
+  in #ff5566 at .55 opacity beneath the crisp stroke, so luminosity reads as
+  emitted BY the line (the text-shadow technique) — explicitly NOT the heart's
+  drop-shadow halo (ADR-045's feMerge filter retired with this rewrite).
+  Heart/gradient-trace/packet unchanged. Standing rule honored: full rewrite.
