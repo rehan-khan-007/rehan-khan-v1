@@ -14,4 +14,4 @@
 | WOE repo/docs | MISSING VERIFIED SOURCE | content/projects/woe.ts |
 | Education periods/credentials | MISSING VERIFIED SOURCE | content/experience.ts |
 | About copy | MISSING VERIFIED SOURCE (Rehan) | content/about.ts |
-| Domain | MISSING VERIFIED SOURCE | NEXT_PUBLIC_SITE_URL |
+| Domain | RESOLVED — rehank.in (canonical, ADR-024) | www redirect configured at deploy |

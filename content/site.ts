@@ -33,3 +33,6 @@ export const site = {
 } as const;
 
 export const liveDestinations = site.destinations.filter((d) => d.status === "live");
+
+// Canonical production URL — env override wins (Vercel), rehank.in default (ADR-024)
+export const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://rehank.in";

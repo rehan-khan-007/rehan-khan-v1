@@ -92,3 +92,9 @@ ADR-023 · Commit d68b9c7 is an omnibus. Broad git add -A under the ADR-021 labe
   its own commit block.
   ADR-022 (footer removal): allocated, then CANCELLED by founder before merge —
   number reserved, decision void. Footer remains in the layout.
+
+ADR-024 · Canonical domain wired: https://rehank.in (apex). siteUrl constant in
+  content/site.ts (env-overridable for Vercel preview deploys); consumed by sitemap,
+  robots, and layout metadataBase (silences Next warning; absolute OG/canonical URLs).
+  localhost fallback removed — CI builds now emit production URLs. www subdomain:
+  redirect to apex, configured at Vercel deploy time. Deploy target: rehank.in.
