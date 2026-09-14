@@ -71,6 +71,7 @@
    Fixed-width interval; the SVG never stretches, so the word gap and
    the trace length stay independent (DC handoff). */
 .pulse {
+  overflow: visible;
   position: relative;
   display: inline-flex;
   align-items: center;
@@ -88,7 +89,7 @@
   top: 50%;
   transform: translate(-50%, -50%);
   display: block;
-  width: clamp(170px, 15vw, 260px);
+  width: clamp(200px, 17vw, 290px);
   height: 2em;
   filter: drop-shadow(0 0 11px rgba(255, 59, 78, 0.34));
 }
@@ -173,7 +174,8 @@
 @media (max-width: 1023px) {
   .notice { grid-template-columns: minmax(0, 1fr); }
   .notice__line { flex-wrap: wrap; white-space: normal; font-size: clamp(18px, 6.4vw, 28px); }
-  .pulse { width: clamp(120px, 28vw, 175px); }
+  .pulse {
+  overflow: visible; width: clamp(120px, 28vw, 175px); }
   .pulse__svg { width: clamp(125px, 29vw, 175px); }
   .notice__cta {
     padding: 20px;

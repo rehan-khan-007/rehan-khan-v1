@@ -322,3 +322,14 @@ ADR-046 · ECG geometry extended (founder: lead-in + post-heart trace both longe
   unchanged. pathLength stays 320 — the packet sweep covers the same fraction of
   a now-longer run. Full-file rewrite per the standing rule (no regex on JSX).
   Dies with the band.
+
+ADR-047 · Lead-in disappearance fixed (founder report: "red line on the left of the
+  heart is gone"). Root cause: ADR-046 widened the viewBox to 300 and pushed the
+  lead-in to x=58-60, but the CSS box (170-260px) was narrower than the viewBox's
+  rendered aspect — preserveAspectRatio="meet" scaled the drawing down and the left
+  run landed outside/edge-clipped. Fix: (a) .pulse overflow: visible (SVG art may
+  exceed the interval box — the box positions the HEART between the words; the trace
+  is absolute, pointer-events none, and can breathe past it); (b) svg width raised
+  to clamp(200px,17vw,290px) so the box comfortably contains the 300-unit drawing;
+  (c) lead-in anchored at x=60 with viewBox margin both ends. Geometry per ADR-046
+  otherwise unchanged (52px lead-in, 84px ECG). Standing rule honored: full rewrite.

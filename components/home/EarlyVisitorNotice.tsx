@@ -1,7 +1,7 @@
 import { site } from "@/content/site";
 import { DampedReadout } from "./DampedReadout";
 
-// TEMPORARY (ADR-043/044/045/046) — early-visitor band. Geometry stays
+// TEMPORARY (ADR-043/044/045/046/047) — early-visitor band. Geometry stays
 // decoupled from the hero. Retirement: delete this file + DampedReadout.tsx +
 // styles/notice.css + the fenced lines in app/page.tsx. Nothing else.
 
@@ -17,7 +17,12 @@ export function EarlyVisitorNotice() {
           <p className="notice__line">
             <span>FOR&nbsp; &nbsp;YOU</span>
             <span className="pulse">
-              <svg className="pulse__svg" viewBox="0 0 300 40" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+              <svg
+                className="pulse__svg"
+                viewBox="0 0 300 40"
+                preserveAspectRatio="xMidYMid meet"
+                aria-hidden="true"
+              >
                 <defs>
                   <filter id="rk-glow" x="-60%" y="-120%" width="220%" height="340%">
                     <feGaussianBlur stdDeviation="2.2" result="b" />
@@ -32,8 +37,11 @@ export function EarlyVisitorNotice() {
                     <stop offset="1" stopColor="#3fdcbe" />
                   </linearGradient>
                 </defs>
+                {/* Lead-in: 60 -> 112 (52px). ECG: 168 -> 252 (84px). Both
+                    inside the 0-300 viewBox with margin at both ends —
+                    nothing near an edge, nothing for 'meet' to crop. */}
                 <path
-                  d="M58 20 L112 20"
+                  d="M60 20 L112 20"
                   fill="none"
                   stroke="#ff3b4e"
                   strokeWidth="2.4"
