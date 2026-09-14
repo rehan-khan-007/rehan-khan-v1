@@ -34,6 +34,8 @@ const ALLOWED_CLIENT = new Set([
   "components/layout/MobileNav.tsx",
   "components/home/Boot.tsx",
   "components/home/PhotoRecession.tsx",
+  "components/home/EarlyVisitorNotice.tsx",
+  "components/home/DampedReadout.tsx",
   "components/motion/Reveal.tsx",
 ]);
 

@@ -285,3 +285,17 @@ ADR-043 · Founder requested full restoration of the ADR-040 notice ANIMATION tr
   mono floor (041 discipline kept — sub-floor sizes stay dead). Reduced motion: all
   animation off, stroke-dashoffset pinned, band fully present. Retirement: unchanged —
   delete component + css + fenced lines; red dies with it.
+
+ADR-044 · DampedReadout RESTORED with explanatory copy (founder: "I want the damped
+  response also, but it should make the person understand what it means — shouldn't
+  be zero context"). Supersedes ADR-041's readout removal on this point. The
+  visualization is the ADR-040 sim verbatim (2nd-order, w=7.2, z=0.2, kick 8.4/5200ms,
+  >=1024px + visible + motion-ok only; static closed-form curve server-rendered for
+  JS-disabled; pauses on visibilitychange). NEW copy layer: caption "SYSTEMS THINKING,
+  LIVE · X · Ẋ" (replaces bare "DAMPED RESPONSE") + note "A damped system rings once,
+  then settles — like this site, and everything else I build." — the caption teaches
+  what the signal IS and ties it to the builder's identity; honest by design
+  (representative behavior, never claims measured data; note is metaphor, not claim).
+  Field hidden below 1024px as before. Statement scaled 28-54px -> 24-44px to give
+  the field room without growing the band's dominance. Client boundary amended:
+  +DampedReadout. Retirement: dies with the band (same 4 deletions).
