@@ -15,6 +15,7 @@ export interface Utility {
 
 export const site = {
   name: "Rehan Khan",
+  nameLines: ["Rehan", "Khan"] as const,
   positioningLabel: "AI / Systems / Software",
   positioning: "AI / SYSTEMS / SOFTWARE",
   thesis:

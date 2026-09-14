@@ -7,8 +7,8 @@ export default function ExperiencePage() {
   const display = [...education].reverse(); // canonical storage ascending: RIMC → NDA → IIT Bombay
   return (
     <div className="px-5 py-20 md:px-10 lg:px-14 lg:py-28 xl:px-20">
-      <p className="mono-label mb-2">Experience</p>
-      <h1 className="mb-10 font-display text-4xl font-bold tracking-tight md:text-5xl">The Record</h1>
+      <p className="font-mono uppercase text-label text-neutral-400 mb-2">Experience</p>
+      <h1 className="mb-10 font-display text-4xl font-medium tracking-tight md:text-5xl">The Record</h1>
       <div className="border-b border-divider">
         {display.map((entry) => (
           <div key={entry.institution} className="grid grid-cols-[7rem_1fr] gap-4 border-t border-divider py-6">

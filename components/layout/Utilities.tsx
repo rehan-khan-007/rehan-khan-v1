@@ -10,7 +10,7 @@ export function Utilities() {
               <a
                 href={u.href}
                 data-track={u.track}
-                className="font-mono text-xs uppercase tracking-[0.14em] text-neutral-300 underline-offset-4 transition-colors hover:text-accent-200 hover:underline"
+                className="font-mono uppercase text-label text-neutral-300 underline-offset-4 transition-colors hover:text-accent-200 hover:underline"
               >
                 {u.label}
               </a>
@@ -18,7 +18,7 @@ export function Utilities() {
               <span
                 aria-disabled="true"
                 title="Pending verified asset"
-                className="cursor-not-allowed font-mono text-xs uppercase tracking-[0.14em] text-neutral-600"
+                className="cursor-not-allowed font-mono uppercase text-label text-neutral-500"
               >
                 {u.label}
               </span>

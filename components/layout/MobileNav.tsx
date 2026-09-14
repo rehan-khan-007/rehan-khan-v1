@@ -68,8 +68,8 @@ export function MobileNav() {
                     onClick={() => setOpen(false)}
                     className="flex min-h-14 items-center gap-4 py-3"
                   >
-                    <span className="mono-label">{d.index}</span>
-                    <span className="font-display text-2xl font-semibold">{d.label}</span>
+                    <span className="font-mono uppercase text-index text-neutral-500">{d.index}</span>
+                    <span className="font-display font-medium uppercase text-destination text-ink">{d.label}</span>
                   </Link>
                 </li>
               ))}

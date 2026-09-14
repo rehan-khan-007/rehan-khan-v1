@@ -16,10 +16,10 @@ const SECTION_LABELS: Record<ProjectSection["kind"], string> = {
 export function CaseStudy({ project }: { project: Project }) {
   return (
     <article className="px-5 py-20 md:px-10 lg:px-14 lg:py-28 xl:px-20">
-      <p className="mono-label mb-2">Work / {project.index}</p>
-      <h1 className="font-display text-4xl font-bold tracking-tight md:text-5xl">{project.name}</h1>
+      <p className="font-mono uppercase text-label text-neutral-400 mb-2">Work / {project.index}</p>
+      <h1 className="font-display text-4xl font-medium tracking-tight md:text-5xl">{project.name}</h1>
       {project.tagline && <p className="mt-3 max-w-[60ch] text-thesis text-neutral-300">{project.tagline}</p>}
-      <p className="mono-label mt-4 text-accent!">{project.status}</p>
+      <p className="font-mono uppercase text-label text-accent mt-4">{project.status}</p>
 
       {project.status === "pending" ? (
         <p className="mono-label mt-12">Case study pending verified source material.</p>
@@ -27,7 +27,7 @@ export function CaseStudy({ project }: { project: Project }) {
         <div className="mt-12 max-w-[68ch] space-y-12">
           {project.sections.map((section, i) => (
             <section key={section.kind}>
-              <h2 className="mono-label mb-4 text-neutral-400!">
+              <h2 className="font-mono uppercase text-label text-neutral-400 mb-4">
                 {String(i + 1).padStart(2, "0")} — {SECTION_LABELS[section.kind]}
               </h2>
               {"body" in section && <p className="text-thesis text-neutral-300">{section.body}</p>}

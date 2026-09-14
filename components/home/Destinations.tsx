@@ -13,10 +13,10 @@ export function Destinations() {
               className="group flex min-h-14 items-baseline justify-between border-t border-divider py-4 transition-colors hover:border-accent/40"
             >
               <span className="flex items-baseline gap-4">
-                <span className="mono-label text-neutral-600! group-hover:text-accent!">{d.index}</span>
-                <span className="font-display text-2xl font-semibold tracking-tight md:text-3xl">{d.label}</span>
+                <span className="font-mono uppercase text-index text-neutral-500 group-hover:text-accent">{d.index}</span>
+                <span className="font-display font-medium uppercase text-destination text-ink group-hover:text-neutral-100">{d.label}</span>
               </span>
-              <span aria-hidden className="font-mono text-sm text-neutral-500 transition-transform duration-150 group-hover:translate-x-1 group-hover:text-accent">→</span>
+              <span aria-hidden className="font-mono text-arrow text-neutral-500 transition-transform duration-150 group-hover:translate-x-1 group-hover:text-accent">→</span>
             </Link>
           </li>
         ))}

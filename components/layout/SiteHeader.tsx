@@ -9,7 +9,7 @@ export function SiteHeader() {
       <Link
         href="/"
         data-track="nav_home"
-        className="font-display text-lg font-extrabold uppercase tracking-tight"
+        className="font-display text-lg font-medium uppercase tracking-tight"
         aria-label={`${site.name} — home`}
       >
         RK

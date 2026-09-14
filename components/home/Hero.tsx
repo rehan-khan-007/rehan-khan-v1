@@ -11,7 +11,6 @@ export function Hero() {
       aria-label="Introduction"
       className="grid grid-cols-1 lg:min-h-svh lg:grid-cols-[0.88fr_1.12fr]"
     >
-      {/* Photo above interface on mobile; right column on desktop */}
       <div className="order-1 flex items-center justify-center py-6 md:py-10 lg:order-2 lg:py-0">
         <PhotoRecession>
           <HeroPhoto />
@@ -20,10 +19,14 @@ export function Hero() {
 
       <div className="order-2 flex flex-col justify-center px-5 pb-16 pt-10 md:px-10 lg:order-1 lg:px-14 lg:pb-24 lg:pt-24 xl:px-20">
         <Boot>
-          <p className="mono-label text-accent!">{site.positioning}</p>
-          <h1 className="text-display font-extrabold uppercase">{site.name}</h1>
-          <hr className="border-divider" aria-hidden />
-          <p className="max-w-[44ch] text-thesis text-neutral-300">{site.thesis}</p>
+          <p className="font-mono uppercase font-medium text-kicker text-accent-300">{site.positioning}</p>
+          <h1 className="text-display uppercase text-neutral-100">
+            {site.nameLines.map((line) => (
+              <span key={line} className="block">{line}</span>
+            ))}
+          </h1>
+          <hr className="identity-rule" aria-hidden />
+          <p className="measure-thesis text-thesis text-neutral-300">{site.thesis}</p>
           <Destinations />
           <div className="mt-10 md:hidden">
             <Utilities />

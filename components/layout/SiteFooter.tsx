@@ -10,7 +10,7 @@ export function SiteFooter() {
           <ul className="flex flex-wrap gap-x-6 gap-y-2">
             {liveDestinations.map((d) => (
               <li key={d.href}>
-                <Link href={d.href} className="font-mono text-xs uppercase tracking-[0.14em] text-neutral-400 hover:text-accent">
+                <Link href={d.href} className="font-mono uppercase text-label text-neutral-400 hover:text-accent">
                   {d.label}
                 </Link>
               </li>
@@ -19,7 +19,7 @@ export function SiteFooter() {
         </nav>
         <Utilities />
       </div>
-      <p className="mono-label mt-8">Rehan Khan — V1 · © {new Date().getFullYear()}</p>
+      <p className="font-mono uppercase text-label text-neutral-400 mt-8">Rehan Khan — V1 · © {new Date().getFullYear()}</p>
     </footer>
   );
 }
