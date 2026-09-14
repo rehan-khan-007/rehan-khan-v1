@@ -1,0 +1,210 @@
+/* ================================================================
+   TEMPORARY — EARLY-VISITOR NOTICE BAND (ADR-040). Retire: delete
+   this file + its @import in globals.css + EarlyVisitorNotice.tsx +
+   DampedReadout.tsx + page.tsx usages + Hero/HeroPhoto compact.
+   Red (#FF3B4E) is TEMPORARY — it must never leave this file.
+   Values mirror the DC handoff verbatim; palette literals match the
+   locked Phase Space tokens (ink-600 per handoff: #5f736f).
+   ================================================================ */
+
+.notice {
+  --n-heart: #ff3b4e;
+  --n-line: rgba(63, 220, 190, 0.24);
+  --n-inner: rgba(63, 220, 190, 0.18);
+  --n-radius: 8px;
+  position: relative;
+  z-index: 5;
+  margin: 0 20px clamp(28px, 4.5vh, 52px);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(240px, 0.34fr);
+  align-items: stretch;
+  border: 1px solid var(--n-line);
+  border-radius: var(--n-radius);
+  background: linear-gradient(180deg, rgba(63, 220, 190, 0.045) 0%, rgba(63, 220, 190, 0.012) 100%);
+  animation: n-rise 620ms cubic-bezier(0.16, 1, 0.3, 1) 60ms both;
+}
+@media (min-width: 768px)  { .notice { margin-left: 40px; margin-right: 40px; } }
+@media (min-width: 1024px) { .notice { margin-left: 56px; margin-right: 56px; } }
+@media (min-width: 1280px) { .notice { margin-left: 80px; margin-right: 80px; } }
+
+.notice__left {
+  padding: clamp(20px, 2.3vw, 30px) clamp(24px, 3vw, 40px);
+  display: grid;
+  grid-template-columns: minmax(min-content, auto) minmax(160px, 1fr);
+  column-gap: clamp(20px, 3vw, 48px);
+  align-items: center;
+}
+.notice__copy { display: flex; flex-direction: column; align-items: flex-start; }
+.notice__label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #9df0e0;
+  margin-bottom: 12px;
+}
+.notice__stack { display: flex; flex-direction: column; align-items: flex-start; gap: 14px; }
+.notice__line {
+  margin: 0 0 14px;
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  gap: 0.02em;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(28px, 3.1vw, 54px);
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+  text-transform: uppercase;
+  color: #f1f7f5;
+}
+.notice__body {
+  margin: 0;
+  max-width: 36ch;
+  font-family: var(--font-display);
+  font-size: clamp(15px, 1.15vw, 18px);
+  line-height: 1.55;
+  color: #c2d2ce;
+  text-wrap: pretty;
+}
+
+/* heart sits in a fixed-width interval; the SVG never stretches, so the
+   word gap and the trace length stay independent (per handoff) */
+.pulse {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(130px, 11vw, 190px);
+  height: 1em;
+  margin: 0 0.1em;
+  flex: 0 0 auto;
+}
+.pulse__svg {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: block;
+  width: clamp(150px, 13vw, 220px);
+  height: 2em;
+  filter: drop-shadow(0 0 11px rgba(255, 59, 78, 0.34));
+}
+.pulse__heart {
+  position: relative;
+  z-index: 2;
+  display: inline-block;
+  color: #ff3b4e;
+  font-size: 1.08em;
+  line-height: 1;
+  font-variant-emoji: text;
+  filter: drop-shadow(0 0 16px rgba(255, 59, 78, 0.5));
+  animation: n-beat 2600ms ease-in-out 1500ms infinite;
+  will-change: transform;
+}
+.pulse__packet {
+  animation: n-packet 2600ms cubic-bezier(0.3, 0.7, 0.4, 1) 1500ms infinite;
+  opacity: 0.9;
+}
+
+/* damped-response readout — 9px caption is TEMPORARY-ONLY (below ratified floor) */
+.field {
+  position: relative;
+  height: 100%;
+  min-height: 112px;
+  display: flex;
+  align-items: center;
+  -webkit-mask-image: linear-gradient(to right, #000 0%, #000 72%, transparent 100%);
+  mask-image: linear-gradient(to right, #000 0%, #000 72%, transparent 100%);
+}
+.field__svg { display: block; width: 100%; height: clamp(92px, 11vh, 124px); }
+.field__cap {
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #5f736f;
+}
+
+/* GitHub cell — the whole cell is the destination */
+.notice__gh {
+  padding: clamp(22px, 2.6vw, 34px) clamp(24px, 3vw, 40px);
+  border-left: 1px solid var(--n-inner);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 10px;
+  color: #e4ede9;
+  border-radius: 0 var(--n-radius) var(--n-radius) 0;
+  transition: background-color 140ms ease;
+}
+.notice__gh:hover { background-color: rgba(63, 220, 190, 0.07); }
+.gh__title {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  font-family: var(--font-display);
+  font-size: clamp(18px, 1.5vw, 24px);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #f1f7f5;
+}
+.gh__arrow { font-size: 15px; color: #3fdcbe; }
+.gh__rule {
+  height: 1px;
+  width: 100%;
+  max-width: 220px;
+  opacity: 0.8;
+  margin: 2px 0 4px;
+  background: linear-gradient(to right, #3fdcbe, rgba(63, 220, 190, 0));
+}
+.gh__fine {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  line-height: 1.7;
+  color: #7e918d;
+}
+
+@keyframes n-rise { from { opacity: 0; transform: translateY(11px); } to { opacity: 1; transform: none; } }
+@keyframes n-beat {
+  0%, 100% { transform: scale(1); }
+  9% { transform: scale(1.1); }
+  18% { transform: scale(1); }
+  27% { transform: scale(1.055); }
+  36% { transform: scale(1); }
+}
+@keyframes n-packet { from { stroke-dashoffset: 320; } to { stroke-dashoffset: 0; } }
+
+@media (max-width: 1023px) {
+  .notice { grid-template-columns: minmax(0, 1fr); }
+  .notice__left { padding: 22px 20px; grid-template-columns: minmax(0, 1fr); }
+  .notice__line { flex-wrap: wrap; font-size: clamp(22px, 6.4vw, 34px); }
+  .pulse { width: clamp(104px, 26vw, 150px); }
+  .pulse__svg { width: clamp(110px, 27vw, 150px); }
+  .field { display: none; }
+  .notice__gh {
+    padding: 20px;
+    border-left: none;
+    border-top: 1px solid var(--n-inner);
+    border-radius: 0 0 var(--n-radius) var(--n-radius);
+  }
+}
+
+/* scoped reduced-motion — no blanket opacity overrides (per handoff) */
+@media (prefers-reduced-motion: reduce) {
+  .notice, .notice *, .notice *::before, .notice *::after {
+    animation: none !important;
+    transition: none !important;
+    stroke-dashoffset: 0 !important;
+  }
+}

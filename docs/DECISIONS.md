@@ -211,3 +211,25 @@ ADR-039 · Display word-spacing (founder polish request, supersedes the font-siz
   font-size reduction (would break V4's 5.75rem ratified scale for a spacing problem).
   One-line guarantee unaffected: ~+10px width vs ~200px margin at the tightest zone
   (1024-1150). Tunable live: 0.28em is the starting value.
+
+ADR-040 · TEMPORARY early-visitor notice state (DC handoff implementation; Phase 2
+  remains CLOSED — bounded homepage change only). Full-width band between header and
+  hero; verbatim copy; heart/pulse CSS-only (2600ms cycle, 1500ms delay, 10% peak);
+  ECG packet sweep (pathLength 320, dash 16/320); damped-response readout (2nd-order
+  sim: w=7.2, z=0.2, kick 8.4 per 5200ms — REPRESENTATIVE behaviour, never captioned
+  as project data; runs only >=1024px + visible + motion-ok; static closed-form curve
+  server-rendered for JS-disabled); whole-cell GitHub CTA to the CONFIGURED profile
+  URL; red #FF3B4E confined to this state. Isolation: 2 new components + 1 css file +
+  <Hero compact> prop (top padding + panel cap only) + one globals import.
+  RETIREMENT (exact): (1) page.tsx — remove notice lines, <Hero compact /> → <Hero />;
+  (2) delete EarlyVisitorNotice.tsx, DampedReadout.tsx, styles/notice.css; (3)
+  globals.css — remove the TEMPORARY import; (4) Hero.tsx — drop compact, restore
+  lg:min-h-svh + lg:pt-24 unconditional; (5) HeroPhoto.tsx — drop compact, restore
+  min(74vh,660px); (6) repo-lint.ts — remove DampedReadout from ALLOWED_CLIENT;
+  (7) verify: no .notice/.pulse/.field/.gh classes remain, no red, no rAF, name still
+  one line at 360px. PERMANENT (survives retirement): --text-display →
+  clamp(30px,5.6vw,88px) per handoff directive (supersedes ADR-037 display size;
+  ADR-038 one-line lineage; ADR-039 word-spacing retained — handoff silent, flagged).
+  Deviations from handoff documented in the implementation report (gutter alignment
+  to site scale, namespaced keyframes, SSR'd static path, ink-600 literal, min-h-svh
+  drop while compact, mobile/tablet hero paddings unchanged).

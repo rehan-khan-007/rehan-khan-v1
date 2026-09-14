@@ -39,3 +39,11 @@ twitter:image via file convention. Per-project cards: Phase 5.
 ## data-track status (ADR-030)
 Attributes present on key links but INERT by decision — no listener, no provider,
 zero external requests in V1. Activation requires an explicit founder product decision.
+
+## TEMPORARY: early-visitor notice (ADR-040)
+components/home/EarlyVisitorNotice.tsx (server, homepage-only) + DampedReadout.tsx
+(client; closed-boundary list amended) + styles/notice.css (self-contained, scoped
+.notice/.pulse/.field/.gh classes, literal palette, imported from globals.css).
+Retirement = deletion; exact steps in docs/DECISIONS.md ADR-040. PERMANENT side
+effect: --text-display is now clamp(30px,5.6vw,88px) per DC handoff (one-line
+name; survives retirement).

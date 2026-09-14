@@ -1,18 +1,21 @@
 import Image from "next/image";
 
 // LOCKED ASSET: approved motorcycle / Himalayan photograph → public/images/hero/hero.jpg
-// ADR-020: panel follows the source aspect ratio (1311x1200) — the full scene is
-// always visible on any screen size. Fluid width, height capped at min(74vh, 660px).
+// ADR-020: panel follows source aspect ratio (1311x1200); height capped via maxWidth.
+// `compact` is TEMPORARY (ADR-040): cap min(74vh,660px) → min(62vh,580px) while the
+// early-visitor notice is mounted. Reverts with the notice.
 const HERO_BLUR =
   "data:image/jpeg;base64,UklGRh4AABXRUJQVlA4TAEAAAAvAAAAAA==";
 
-export function HeroPhoto() {
+export function HeroPhoto({ compact = false }: { compact?: boolean }) {
   return (
     <figure
       className="relative mx-auto w-full"
       style={{
         aspectRatio: "1311 / 1200",
-        maxWidth: "calc(min(74vh, 660px) * 1.0925)",
+        maxWidth: compact
+          ? "calc(min(62vh, 580px) * 1.0925)"
+          : "calc(min(74vh, 660px) * 1.0925)",
       }}
     >
       <Image

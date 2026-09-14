@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* ===== TEMPORARY (ADR-040): early-visitor notice — retire: delete this import + styles/notice.css ===== */
+@import "./notice.css";
+
 @theme {
   /* — Phase Space color system (locked) — */
   --color-bg: #050f0e;
@@ -19,7 +22,7 @@
   --font-mono: var(--font-plex-mono), ui-monospace, "SF Mono", monospace;
 
   /* — Type system: V4-ratified tokens (ADR-037; supersedes provisional ADR-011 scale) — */
-  --text-display: clamp(2.5rem, 6.4vw, 5.75rem);
+  --text-display: clamp(30px, 5.6vw, 88px);
   --text-display--line-height: 0.94;
   --text-display--letter-spacing: -0.045em;
   --text-display--font-weight: 500;
