@@ -194,3 +194,12 @@ ADR-036 · PHASE 2 CLOSED. Evidence: docs/PERFORMANCE.md (perf 97-100, a11y 96-1
   fidelity applied. Carried: formal SR audit + 360px explicit (Phase 8), blur LQIP
   (Phase 8), analytics activation (founder decision), per-project OG + CreativeWork
   (Phase 5), design-backlog items (a)/(b) above.
+
+ADR-038 · One-line name (FOUNDER OVERRIDE of Claude fidelity should-fix #11, which
+  ratified V4's two-line identity block). Decision hierarchy: founder > creative.
+  h1 renders site.name single-line with whitespace-nowrap (never wraps at any width).
+  All other ADR-037 tokens unchanged. Fit analysis: ~505px text at 5.75rem cap vs
+  ~507px left column at 1440 (fits, grows beyond); knife-edge zone 1024-1150 —
+  founder visual check post-deploy; fallback is a one-number display-cap tweak.
+  Also: settled re-measure median LCP 2.1s / perf 99-100 (runs 1.0/2.1/2.1) —
+  prior 2.7s spot-check confirmed deploy-cache variance, discarded.
