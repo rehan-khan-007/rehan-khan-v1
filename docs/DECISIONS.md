@@ -185,3 +185,23 @@ ADR-035 (PENDING FOUNDER RATIFICATION) · Budget disposition: homepage JS 155KB 
   impact: perf 97-99, CLS 0, TBT 10ms, desktop 100/0.5s. RECOMMENDATION: accept both
   with this ledger as evidence; B6 real-device check as the human tiebreaker. Founder
   ratification flips this from pending to accepted.
+
+ADR-037 · V4 type system ratified and applied (Claude Phase 3 fidelity review: APPROVED
+  WITH CHANGES). Full token block in styles/globals.css: display (clamp 2.5rem-5.75rem,
+  lh 0.94, ls -0.045em, w500, two-line name via site.nameLines), thesis (fluid, 42ch
+  measure), destination rows (clamp 16-21px, w500, +0.02em, UPPERCASE — fixes ~43%
+  oversize), kicker split (0.3em/accent-300) from label (0.16em/neutral-400) from index
+  (10px/neutral-500); utilities 11px; row-title/row-desc/arrow tokens; identity rule
+  token. Weight discipline: 400/500 only site-wide (variable Archivo already serves
+  both). neutral-600 retired from text. h2-as-label on Selected Work + All-work link.
+  CLOSES ADR-011. Claude's separate recommendations recorded to design backlog: (a)
+  DC test destination 21 vs ~26px with uppercase/+0.02em held; (b) deliberate decision
+  on 1024-1280 panel height behavior. Utilities duplication confirmed resolved (ADR-021,
+  matches V4). Inner-page h1 scale: outside V4 scope, weight normalized only.
+ADR-036 · PHASE 2 CLOSED. Evidence: docs/PERFORMANCE.md (perf 97-100, a11y 96-100, CLS 0,
+  TBT <=10ms, desktop LCP 0.4-0.5s, mobile 2.0-2.1s); keyboard PASS (tab order, focus
+  escape, Escape+return); JS-disabled PASS; VoiceOver informal PASS; real-device PASS
+  (iPhone Safari, cellular); deploy curls green (apex/OG/JSON-LD/www/resume); ADR-037
+  fidelity applied. Carried: formal SR audit + 360px explicit (Phase 8), blur LQIP
+  (Phase 8), analytics activation (founder decision), per-project OG + CreativeWork
+  (Phase 5), design-backlog items (a)/(b) above.
