@@ -1,8 +1,7 @@
 import { site } from "@/content/site";
 import { DampedReadout } from "./DampedReadout";
 
-// TEMPORARY (ADR-043/044/045) — early-visitor band: full animation treatment,
-// readout with explanatory copy, visible+glowing ECG lead-in. Geometry stays
+// TEMPORARY (ADR-043/044/045/046) — early-visitor band. Geometry stays
 // decoupled from the hero. Retirement: delete this file + DampedReadout.tsx +
 // styles/notice.css + the fenced lines in app/page.tsx. Nothing else.
 
@@ -18,7 +17,7 @@ export function EarlyVisitorNotice() {
           <p className="notice__line">
             <span>FOR&nbsp; &nbsp;YOU</span>
             <span className="pulse">
-              <svg className="pulse__svg" viewBox="0 0 280 40" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+              <svg className="pulse__svg" viewBox="0 0 300 40" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
                 <defs>
                   <filter id="rk-glow" x="-60%" y="-120%" width="220%" height="340%">
                     <feGaussianBlur stdDeviation="2.2" result="b" />
@@ -34,7 +33,7 @@ export function EarlyVisitorNotice() {
                   </linearGradient>
                 </defs>
                 <path
-                  d="M78 20 L112 20"
+                  d="M58 20 L112 20"
                   fill="none"
                   stroke="#ff3b4e"
                   strokeWidth="2.4"
@@ -43,7 +42,7 @@ export function EarlyVisitorNotice() {
                   filter="url(#rk-glow)"
                 />
                 <path
-                  d="M168 20 L182 20 L187 20 L192 5 L198 35 L203 20 L212 20 L216 15 L221 20 L234 20"
+                  d="M168 20 L184 20 L189 20 L194 5 L201 35 L207 20 L217 20 L221 15 L226 20 L252 20"
                   fill="none"
                   stroke="url(#rk-pulse)"
                   strokeWidth="2.2"
@@ -53,7 +52,7 @@ export function EarlyVisitorNotice() {
                 />
                 <path
                   className="pulse__packet"
-                  d="M168 20 L182 20 L187 20 L192 5 L198 35 L203 20 L212 20 L216 15 L221 20 L234 20"
+                  d="M168 20 L184 20 L189 20 L194 5 L201 35 L207 20 L217 20 L221 15 L226 20 L252 20"
                   fill="none"
                   stroke="#ffe3e7"
                   strokeWidth="2.4"

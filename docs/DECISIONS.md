@@ -312,3 +312,13 @@ ADR-045 AMENDMENT · First attempt (regex filter-insert) broke the JSX tree — 
   LESSON: no regex/perl edits on JSX structure, ever — full-file rewrite for any
   structural component change (three incidents: MP8 patches, ADR-044 mount, ADR-045).
   Fixed via full rewrite; ADR-045's visual changes unchanged.
+
+ADR-046 · ECG geometry extended (founder: lead-in + post-heart trace both longer).
+  Lead-in: 78-112 (34px) -> 58-112 (54px, +59%). ECG complex: 168-234 (66px) ->
+  168-252 (84px, +27%) with the peak structure stretched proportionally (T-wave
+  216/221/234 -> 217/221/226 + flat runs extended). viewBox 280 -> 300. Pulse
+  interval clamps scaled: container 130-190 -> 150-230, svg 150-220 -> 170-260,
+  mobile 104/110-150 -> 120/125-175. Glow/opacity (ADR-045) and animation timing
+  unchanged. pathLength stays 320 — the packet sweep covers the same fraction of
+  a now-longer run. Full-file rewrite per the standing rule (no regex on JSX).
+  Dies with the band.
