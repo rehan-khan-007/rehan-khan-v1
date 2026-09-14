@@ -1,0 +1,64 @@
+/* V4 grid motif, extracted verbatim by the DC (ADR-042). Four hairline divs
+   + readout — NOT a tiled background (per DC integration note). Local line
+   var: V4 neutral-700 #4a5a57 is not a ratified production token, so it
+   stays scoped here. Layer: z-1 = above photo panel, below type (identity
+   column carries z-10 in Hero.tsx). */
+.grid-motif {
+  --gm-line: #4a5a57;
+  position: absolute;
+  left: clamp(20px, 4.5vw, 64px);
+  right: clamp(20px, 4.5vw, 64px);
+  top: clamp(78px, 10vh, 108px);
+  bottom: clamp(60px, 8vh, 86px);
+  pointer-events: none;
+  z-index: 1;
+  animation: gm-fade 900ms ease 400ms both;
+}
+.grid-motif__top,
+.grid-motif__bottom {
+  position: absolute; left: 0; right: 0; height: 1px;
+  background: linear-gradient(to right,
+    transparent,
+    var(--gm-line) 48px,
+    var(--gm-line) calc(100% - 48px),
+    transparent);
+}
+.grid-motif__top { top: 0; }
+.grid-motif__bottom { bottom: 0; }
+.grid-motif__seam {
+  position: absolute; top: 0; bottom: 0;
+  left: calc(44% - 1px);
+  width: 1px;
+  background: linear-gradient(to bottom,
+    transparent,
+    var(--gm-line) 40px,
+    var(--gm-line) calc(100% - 40px),
+    transparent);
+}
+.grid-motif__tick { position: absolute; height: 1px; }
+.grid-motif__tick--a { top: 64%;   width: 22px; left: calc(44% - 11px); background: #3fdcbe; }
+.grid-motif__tick--b { top: 71.5%; width: 12px; left: calc(44% - 6px);  background: #61736f; }
+.grid-motif__tick--c { top: 79%;   width: 12px; left: calc(44% - 6px);  background: #61736f; }
+.grid-motif__readout {
+  position: absolute;
+  left: calc(44% + 10px);
+  bottom: 6px;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #61736f;
+}
+@keyframes gm-fade { from { opacity: 0; } to { opacity: 1; } }
+
+/* below 1024: seam gone, ticks + readout collapse to left edge (V4's JS
+   branch, expressed as the equivalent CSS per DC) */
+@media (max-width: 1023px) {
+  .grid-motif { top: clamp(70px, 10vh, 92px); bottom: clamp(36px, 5vh, 56px); }
+  .grid-motif__seam { left: 0; background: transparent; }
+  .grid-motif__tick--a, .grid-motif__tick--b, .grid-motif__tick--c { left: 0; }
+  .grid-motif__readout { left: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .grid-motif { animation: none !important; }
+}

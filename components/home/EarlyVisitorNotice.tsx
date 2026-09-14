@@ -2,7 +2,7 @@ import { site } from "@/content/site";
 
 // TEMPORARY (ADR-041) — slim early-visitor band, purely additive above the
 // unchanged homepage. Retirement: delete this file + styles/notice.css +
-// the fenced lines in app/page.tsx. Nothing else. Red dies with this state.
+// the fenced lines in app/page.tsx. Nothing else.
 
 const githubHref = site.utilities.find((u) => u.label === "GitHub")?.href;
 

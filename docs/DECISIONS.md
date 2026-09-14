@@ -251,3 +251,23 @@ ADR-041 · CORRECTION of ADR-040 (founder production inspection). Found: (1) the
   branches exist. PERMANENT display ramp clamp(30px,5.6vw,88px) retained (handoff
   permanent directive, not compact coupling; flagged to founder). Responsive rules:
   original homepage breakpoints were never altered — restored by branch removal.
+
+ADR-042 · V4 grid motif reinstated (founder directive: "add the grid thing from V4").
+  Partially supersedes the Phase 2 no-motif lock + handoff "NO hero motif" — founder's
+  call, per decision hierarchy. Implementation: DC-extracted verbatim (extraction chat,
+  no GLM invention): four hairline divs (top/bottom with 48px end-fades, vertical seam
+  at 44% with 40px end-fades, neutral-700 #4a5a57 scoped local — not a global token),
+  three ticks at 64/71.5/79% (first accent #3FDCBE, two neutral-600), readout "x · ẋ"
+  9px neutral-600 decorative aria-hidden; container fade 900ms/400ms, reduced-motion
+  static from first paint; below 1024px seam transparent + ticks/readout at left:0
+  (V4's JS branch as equivalent CSS per DC). NO motif switcher ships (prototype cleanup
+  rule) — renders unconditionally = founder's switch away from V4's micro default.
+  Z-order per DC: grid z-1 (above photo panel, below type); identity column z-10
+  (V4's z-4 equivalent); pointer-events none; hero section gained `relative` +
+  column gained `relative z-10` — positioning only, ZERO geometry change (ADR-041
+  restoration preserved: min-h-svh, pt-24, min(74vh,660px)). Isolation:
+  styles/grid-motif.css + GridMotif.tsx + one mount line — independent retirement
+  if ever wanted. Permanence: implemented PERMANENT (founder framed it as a homepage
+  feature); if it should die with the notice band instead, its retirement is a
+  3-deletion move noted in the css header. NOTE: this block is idempotent-final —
+  it also completes ADR-041 if that corrective had not been run.

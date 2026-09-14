@@ -3,6 +3,9 @@
 /* ===== TEMPORARY (ADR-040): early-visitor notice — retire: delete this import + styles/notice.css ===== */
 @import "./notice.css";
 
+/* V4 grid motif (ADR-042) — if this layer is ever retired: delete this import + styles/grid-motif.css + GridMotif.tsx + its mount in Hero.tsx */
+@import "./grid-motif.css";
+
 @theme {
   /* — Phase Space color system (locked) — */
   --color-bg: #050f0e;
