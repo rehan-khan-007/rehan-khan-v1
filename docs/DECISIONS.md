@@ -82,3 +82,13 @@ ADR-021 · Hero utilities redundancy (founder design review). Utilities rendered
   desktop/tablet (persistent header covers them), in-flow on mobile (header collapses
   to Menu; in-flow beats a menu tap). Footer instance unchanged (deliberate recovery
   path per ARCHITECTURE.md).
+
+ADR-023 · Commit d68b9c7 is an omnibus. Broad git add -A under the ADR-021 label
+  captured five logical changes: (1) suppressHydrationWarning fix (layout.tsx),
+  (2) resume.pdf placed + Resume utility wired, (3) GitHub utility wired,
+  (4) Contact utility wired, (5) hero utilities md:hidden dedupe (ADR-021).
+  All verified present and pushed. History NOT rewritten (force-push rejected:
+  solo repo, ledger is canonical). Process rule adopted: every change ships with
+  its own commit block.
+  ADR-022 (footer removal): allocated, then CANCELLED by founder before merge —
+  number reserved, decision void. Footer remains in the layout.
