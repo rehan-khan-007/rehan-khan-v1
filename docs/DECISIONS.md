@@ -136,3 +136,24 @@ ADR-030 · Audit-gate decisions: (a) data-track attributes remain INERT and docu
   LazyMotion/m-component migration prepared but NOT applied until analyzer attributes the
   ~50KB homepage-only delta; (d) V4 exact type scale remains a source-of-truth gap (ADR-011)
   — current values are provisional by design; Claude's Phase 3 checkpoint owns fidelity.
+
+ADR-031 · Two audit-gate-A process failures, both mine, both mechanized shut:
+  (1) Commit c6e9000 pushed with a FAILED gate — root cause: commit was not chained to
+  verify success. Fix: standing pattern npm run verify && git add && git commit && git push
+  — a red gate can no longer produce a commit. (2) lib/og/ directory never existed when
+  the card heredoc ran (mkdir -p missing) → silent partial application → 3 type errors.
+  Recovery commit followed immediately. Also: ADR-028's OG builder hit satori's WOFF2
+  limitation ([Error: Unsupported OpenType signature wOF2]) at prerender — resolved by
+  committing TTF source files (lib/og/*.ttf, build-time only, Fontsource) for the OG
+  cards; WOFF2 remains the runtime web format. Archivo static 400 replaces the variable
+  file in OG only (variable-axis rendering unsupported by satori; visual delta at card
+  scale: negligible).
+
+ADR-032 · OG fonts final resolution: satori does not support variable fonts (failure
+  signature: TypeError reading '256' on prerender). Fix: fontTools varLib.instancer pins
+  Archivo variable -> static wght=700 (lib/og/Archivo-Bold.ttf); IBPlexMono-Medium is
+  already static. OG title weight 700 + size 100px (was 400/118) — matches the site's
+  bold display identity and guarantees one-line fit for the longest card title
+  ('SELECTED WORK'). Chain of failures for the record: WOFF2 signature -> TTF conversion
+  -> variable-font instancing. The chained verify-gate caught all three before any
+  broken commit reached main (after the one it didn't — ADR-031).

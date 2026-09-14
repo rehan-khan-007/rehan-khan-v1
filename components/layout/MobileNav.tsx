@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import type { FocusEvent } from "react";
+
 import Link from "next/link";
 import { liveDestinations } from "@/content/site";
 import { Utilities } from "./Utilities";
@@ -28,7 +28,7 @@ export function MobileNav() {
   // Focus containment for a full-screen disclosure panel (ADR-027):
   // if focus escapes the panel onto content hidden behind the overlay,
   // close the menu instead of stranding keyboard users behind it.
-  const onFocusOut = (e: FocusEvent<HTMLDivElement>) => {
+  const onPanelBlur = (e: { relatedTarget: EventTarget | null }) => {
     if (!open) return;
     const next = e.relatedTarget as Node | null;
     if (!next) return;
@@ -55,7 +55,7 @@ export function MobileNav() {
           ref={panelRef}
           role="region"
           aria-label="Site navigation"
-          onFocusOut={onFocusOut}
+          onBlur={onPanelBlur}
           className="fixed inset-x-0 top-[60px] bottom-0 z-50 flex flex-col gap-8 overflow-y-auto bg-bg px-5 py-8"
           style={{ animation: "nav-in 200ms ease-out" }}
         >
