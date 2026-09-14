@@ -20,7 +20,7 @@ export function Hero() {
       <div className="order-2 flex flex-col justify-center px-5 pb-16 pt-10 md:px-10 lg:order-1 lg:px-14 lg:pb-24 lg:pt-24 xl:px-20">
         <Boot>
           <p className="font-mono uppercase font-medium text-kicker text-accent-300">{site.positioning}</p>
-          <h1 className="text-display uppercase text-neutral-100 whitespace-nowrap">{site.name}</h1>
+          <h1 className="text-display uppercase text-neutral-100 whitespace-nowrap" style={{ wordSpacing: "var(--text-display--word-spacing)" }}>{site.name}</h1>
           <hr className="identity-rule" aria-hidden />
           <p className="measure-thesis text-thesis text-neutral-300">{site.thesis}</p>
           <Destinations />

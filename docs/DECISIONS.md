@@ -203,3 +203,11 @@ ADR-038 · One-line name (FOUNDER OVERRIDE of Claude fidelity should-fix #11, wh
   founder visual check post-deploy; fallback is a one-number display-cap tweak.
   Also: settled re-measure median LCP 2.1s / perf 99-100 (runs 1.0/2.1/2.1) —
   prior 2.7s spot-check confirmed deploy-cache variance, discarded.
+
+ADR-039 · Display word-spacing (founder polish request, supersedes the font-size-reduction
+  option). Problem: at -0.045em tracking, uppercase REHAN KHAN fuses into one dense block
+  — the word gap collapses visually. Fix: word-spacing 0.28em on the display h1 only
+  (tight letter tracking retained — it is what makes Archivo read as display). NOT chosen:
+  font-size reduction (would break V4's 5.75rem ratified scale for a spacing problem).
+  One-line guarantee unaffected: ~+10px width vs ~200px margin at the tightest zone
+  (1024-1150). Tunable live: 0.28em is the starting value.

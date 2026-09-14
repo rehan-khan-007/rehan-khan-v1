@@ -62,6 +62,7 @@
 
   --text-arrow: 0.8125rem;
 
+  --text-display--word-spacing: 0.28em;
   --rule-width: clamp(6.25rem, 14vw, 11.875rem);
   --rule-height: 1px;
   --rule-opacity: 0.85;
