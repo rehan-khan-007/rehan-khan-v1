@@ -105,3 +105,11 @@ ADR-025 · Secrets guard in repo-lint (CI). Trigger: founder pasted a real env m
   prefixes, credential-bearing connection strings, generic secret literals) and fails CI
   before a secret can be pushed. .env stays untracked via .gitignore (verified).
   Sanitized AgentOS integration inventory recorded in CONTENT.md — names only, never values.
+
+ADR-026 · PRODUCTION LIVE — rehank.in deployed via Vercel (2026-09-14). Apex serves
+  production (environment: Production); www.rehank.in 308-permanent-redirects to apex;
+  rehan-khan-v1.vercel.app retained as debug fallback. DNS: GoDaddy A @ -> 216.198.79.1
+  (new Vercel IP range), CNAME www -> project-specific vercel-dns record. SSL auto-
+  provisioned. Push to main auto-deploys (CI verifies first). Known post-deploy state:
+  utilities live, case studies pending Phase 5 content, JS budget exceedance tracked
+  (ADR-018, Phase 8).
