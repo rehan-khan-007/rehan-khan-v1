@@ -22,7 +22,7 @@ export function CaseStudy({ project }: { project: Project }) {
       <p className="font-mono uppercase text-label text-accent mt-4">{project.status}</p>
 
       {project.status === "pending" ? (
-        <p className="mono-label mt-12">Case study pending verified source material.</p>
+        <p className="font-mono uppercase text-label text-neutral-400 mt-12">Case study pending verified source material.</p>
       ) : (
         <div className="mt-12 max-w-[68ch] space-y-12">
           {project.sections.map((section, i) => (

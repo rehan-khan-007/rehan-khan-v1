@@ -53,17 +53,6 @@ ADR-019 · Hero photo scene legibility (founder inspection, Phase 2). Source 131
   Unchanged: bottom scrim .66 (anchors photo into the environment), contrast 1.05,
   saturation .88, tint #0C2A26 soft-light .34.
 
-ADR-019 · Hero photo scene legibility (founder inspection, Phase 2). Source 1311x1200
-  (near-square) rendered into a wider panel: object-cover crops ~12% of height on desktop,
-  ~27% on mobile; centered crop was cutting the peaks/flags, and treatment dimmed the
-  hazy distant range. Changes per brief §26 (OLD -> NEW -> WHY):
-  objectPosition: center -> center 25% (bias crop to foreground, keep the mountains)
-  filter brightness: .82 -> .88 (lift distant range out of the haze)
-  scrim top stop: .2 -> .1 (top gradient was dimming the peaks; no text overlays the
-  photo, so zero contrast cost)
-  Unchanged: bottom scrim .66 (anchors photo into the environment), contrast 1.05,
-  saturation .88, tint #0C2A26 soft-light .34.
-
 ADR-020 · Hero photo panel follows the source aspect ratio (founder request: auto-adjust
   to browser/screen size; supersedes ADR-019's crop-bias approach). OLD: fixed panel
   heights (256/320/min(74vh,660px)) + object-cover — cropped up to ~27% of the scene

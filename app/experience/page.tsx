@@ -12,9 +12,9 @@ export default function ExperiencePage() {
       <div className="border-b border-divider">
         {display.map((entry) => (
           <div key={entry.institution} className="grid grid-cols-[7rem_1fr] gap-4 border-t border-divider py-6">
-            <span className="mono-label pt-1">{entry.period ?? "—"}</span>
+            <span className="font-mono uppercase text-label text-neutral-400 pt-1">{entry.period ?? "—"}</span>
             <span>
-              <span className="font-display text-xl font-semibold">{entry.institution}</span>
+              <span className="font-display font-medium text-xl">{entry.institution}</span>
               {entry.credential && <span className="mt-1 block text-sm text-neutral-400">{entry.credential}</span>}
             </span>
           </div>
