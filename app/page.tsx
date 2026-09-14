@@ -23,10 +23,10 @@ export default function HomePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd()) }}
       />
-      {/* ===== TEMPORARY: early-visitor notice (ADR-040) — retire per docs/DECISIONS.md ===== */}
+      {/* ===== TEMPORARY (ADR-041): retire = remove import + the 2 lines below + delete EarlyVisitorNotice.tsx + styles/notice.css ===== */}
       <EarlyVisitorNotice />
       {/* ===== /TEMPORARY ===== */}
-      <Hero compact />
+      <Hero />
       <SelectedWork />
     </>
   );

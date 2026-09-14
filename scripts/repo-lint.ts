@@ -35,7 +35,6 @@ const ALLOWED_CLIENT = new Set([
   "components/home/Boot.tsx",
   "components/home/PhotoRecession.tsx",
   "components/motion/Reveal.tsx",
-  "components/home/DampedReadout.tsx",
 ]);
 
 const tsxFiles = [...walk("app", [".tsx"]), ...walk("components", [".tsx"])];

@@ -233,3 +233,21 @@ ADR-040 · TEMPORARY early-visitor notice state (DC handoff implementation; Phas
   Deviations from handoff documented in the implementation report (gutter alignment
   to site scale, namespaced keyframes, SSR'd static path, ink-600 literal, min-h-svh
   drop while compact, mobile/tablet hero paddings unchanged).
+
+ADR-041 · CORRECTION of ADR-040 (founder production inspection). Found: (1) the
+  handoff-permitted hero changes (compact top padding + 62vh panel cap) altered the
+  underlying homepage geometry — founder REJECTED that coupling; the handoff's
+  "single permitted change" is revoked (founder > handoff). (2) The damped-response
+  readout was too dominant — the point is the pumping heart, not a second technical
+  hero. REMOVED: Hero/HeroPhoto compact branches (hero restored to exact pre-040
+  form: lg:min-h-svh, lg:pt-24, min(74vh,660px)), DampedReadout.tsx + its
+  client-boundary entry, ECG pulse SVG, statement scaled 54px->30px cap, sub-floor
+  mono sizes (all mono now 11px). KEPT: additive slim band (label / FOR YOU heart
+  BY ME / body / GitHub CTA "GO SEE WHAT I'M BUILDING ->" per founder copy), tiny
+  transform-only heart pulse (2600ms, 1200ms delay, aria-hidden), configured GitHub
+  URL, red confined to notice.css. RETIREMENT (exact, 3 steps): (1) page.tsx —
+  remove import + the two fenced lines; (2) delete EarlyVisitorNotice.tsx;
+  (3) delete styles/notice.css + its @import. Hero needs NO restoration — no
+  branches exist. PERMANENT display ramp clamp(30px,5.6vw,88px) retained (handoff
+  permanent directive, not compact coupling; flagged to founder). Responsive rules:
+  original homepage breakpoints were never altered — restored by branch removal.
