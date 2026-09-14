@@ -75,3 +75,10 @@ ADR-020 · Hero photo panel follows the source aspect ratio (founder request: au
   Trade-off: composition is the full near-square original ("mounted plate", centered),
   not a wide cinematic band. Mobile height ~357px at 390px width (supersedes the ~260px
   reference — founder's current direction wins per decision hierarchy).
+
+ADR-021 · Hero utilities redundancy (founder design review). Utilities rendered in BOTH
+  header and hero on desktop — read as accidental duplication, weakens the hero's close
+  on destinations. OLD: Utilities in hero at all viewports. NEW: md:hidden — hidden on
+  desktop/tablet (persistent header covers them), in-flow on mobile (header collapses
+  to Menu; in-flow beats a menu tap). Footer instance unchanged (deliberate recovery
+  path per ARCHITECTURE.md).

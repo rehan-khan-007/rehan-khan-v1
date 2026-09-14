@@ -25,7 +25,7 @@ export function Hero() {
           <hr className="border-divider" aria-hidden />
           <p className="max-w-[44ch] text-thesis text-neutral-300">{site.thesis}</p>
           <Destinations />
-          <div className="mt-10">
+          <div className="mt-10 md:hidden">
             <Utilities />
           </div>
         </Boot>

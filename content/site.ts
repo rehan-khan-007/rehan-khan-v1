@@ -20,9 +20,9 @@ export const site = {
   thesis:
     "I build AI systems, software, and research-driven tools at the intersection of intelligent systems and engineering.",
   utilities: [
-    { label: "Resume", href: null, track: "outbound_resume" },
-    { label: "GitHub", href: null, track: "outbound_github" },
-    { label: "Contact", href: null, track: "outbound_contact" },
+    { label: "Resume", href: "/resume.pdf", track: "outbound_resume" },
+    { label: "GitHub", href: "https://github.com/rehan-khan-007", track: "outbound_github" },
+    { label: "Contact", href: "mailto:bro39404k@gmail.com", track: "outbound_contact" },
   ] as Utility[],
   destinations: [
     { label: "Work", href: "/work", index: "01", status: "live" },
